@@ -15,7 +15,7 @@
 
 ```bash
 git clone https://github.com/dubeydivyank/traffic-charts.git
-cd traffic-
+cd traffic-charts
 ```
 
 2. Start the application using Docker Compose:
