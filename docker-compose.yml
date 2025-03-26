@@ -1,0 +1,50 @@
+services:
+    nestjs:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./backend/src:/app/src
+        environment:
+            DB_HOST: mysql_db
+            DB_PORT: 3306
+            DB_USER: user
+            DB_PASSWORD: abc123
+            DB_NAME: traffic_db
+        depends_on:
+            - mysql_db
+    mysql_db:
+        container_name: mysql_db
+        image: mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            MYSQL_DATABASE: traffic_db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: abc123
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 9483:80
+        environment:
+            PMA_HOST: mysql_db
+            PMA_USER: user
+            PMA_PASSWORD: abc123
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
+        restart: always
+        depends_on:
+            - nestjs
