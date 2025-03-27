@@ -50,8 +50,8 @@ export default function VehicleTypePieChart({
                     <CardDescription>{displayDate}</CardDescription>
                 </div>
                 <Select value={activeVehicleType} onValueChange={setActiveVehicleType}>
-                    <SelectTrigger className="ml-auto h-7 w-[130px] rounded-lg pl-2.5" aria-label="Select a value">
-                        <SelectValue placeholder="Select month" />
+                    <SelectTrigger className="ml-auto h-7 w-[160px] rounded-lg pl-2.5" aria-label="Select a value">
+                        <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent align="end" className="rounded-xl">
                         {vehicleTypes.map((key, index) => {
