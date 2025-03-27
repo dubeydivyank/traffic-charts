@@ -10,15 +10,6 @@ export class CountryWiseTrafficQueryDto {
   @IsOptional()
   @IsDateString()
   startDate?: string;
-
-  @ApiProperty({
-    description: 'End date to filter traffic data',
-    example: '2025-03-20T20:31:31.000Z',
-    required: false,
-  })
-  @IsOptional()
-  @IsDateString()
-  endDate?: string;
 }
 
 export class CountryWiseTrafficResponseDto {
