@@ -113,3 +113,26 @@ The backend follows NestJS's modular architecture. The `src` directory contains:
 ---
 
 ---
+
+---
+
+## Scalability
+
+There are 2 primary approaches we can use scale this application.
+
+-   Vertical Scaling: Increasing the resourses of a single machine by adding more RAM, CPU or storage
+-   Horizontal Scaling: Adding more machine to handle increased workload
+
+### Scaling from 5 RPS to 50 RPS
+
+-   We can increase the server resourses if needed
+-   We can implement proper database indexes for frequently queried fields
+-   Fetch only the necessary columns and avoid using SELECT \*
+-   Implement cashing for frequently accessed data
+
+### Scaling from 50 RPS to 500 RPS
+
+-   We can deploy multiple instances of our application and add a load balancer to distribute traffic among the instances
+-   We can introduce read-only replicas of the primary database to offload read traffic from primary database.
+-   We can consider breaking down our application into microservices and can scale each service independently based on the load.
+-   We can implement a CDN if we have to deliver any static content
